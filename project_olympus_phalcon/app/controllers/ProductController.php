@@ -13,24 +13,23 @@ class ProductController extends ControllerBase
 		$request = $this->di->getShared('request');
 
 		$barcode = $request->get('barcode');
-		$product = new Products;
-		var_dump($barcode);
+		$product = $this->di->getShared('product_model');//new Products;
 		$res = $product->getProductByBarcode($barcode);
 
 		//case response is correct
 		$response->setStatusCode(200);
-		var_dump($res);exit;
 
-		if(empty($res))
+		if(!empty($res) && isset($res['barcode']))
 		{
-			$response->setJsonContent(
-				array(
-					$barcode => 'product not found'
-				)
-			);
-		} else {
-			$response->setJsonContent($res);
+			$result[$barcode] = $res;
+			
 		}
+		else
+		{
+			$result[$barcode] = 'product not found';
+		}
+
+		$response->setJsonContent($result);
 		
 
 		return $response;

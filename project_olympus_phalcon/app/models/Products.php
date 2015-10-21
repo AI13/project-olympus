@@ -15,11 +15,11 @@ class Products extends Model
 			)
 		);
 
-		// var_dump($products);
-		foreach ($products as $product) {
-			echo $product->name;
-		}
+		// var_dump($products->getFirst()->toArray());
+		// foreach ($products as $product) {
+		// 	echo $product->name;
+		// }
 
-		return $products;
+		return $products[0]->toArray();
 	}
 }
