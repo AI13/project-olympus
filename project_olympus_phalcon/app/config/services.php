@@ -83,3 +83,13 @@ $di->setShared('session', function () {
 
     return $session;
 });
+
+$di->set('what', function () {
+    return 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx';
+});
+
+$di->setShared('router', function(){
+    return require __DIR__.'/routes.php';
+});
+
+$di->set('config', $config, true);
