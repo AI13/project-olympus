@@ -93,3 +93,7 @@ $di->setShared('router', function(){
 });
 
 $di->set('config', $config, true);
+
+$di->setShared('product_model', function() {
+    return new Products();
+});
