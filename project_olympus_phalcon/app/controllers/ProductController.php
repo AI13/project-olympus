@@ -8,7 +8,6 @@ class ProductController extends ControllerBase
 
 	public function getDetailByBarcodeAction($barcode = 123456)
 	{
-		$barcode = 123456;
 		$response = new Phalcon\Http\Response;
 		$request = $this->di->getShared('request');
 
